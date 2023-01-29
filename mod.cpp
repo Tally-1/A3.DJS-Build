@@ -1,0 +1,14 @@
+ name 			= "A3DJS"; // Name of your mod
+ author 		= "Tally";         // Affects Arma 3 Launcher, when the mod are loaded as local
+ logo 			= "logo.jpg"; // Logo displayed in the main menu
+ logoOver 		= "logo.jpg"; // When the mouse is over, in the main menu
+ tooltip 		= "A3DJS";
+ tooltipOwned 	= "credit_mod"; // Tool tip displayed when the mouse is left over, in the main menu
+ picture 		= "main.jpg"; // Picture displayed from the expansions menu. Optimal size is 2048x1024
+//  actionName 	= "Discord";
+//  action 		= "https://discord.gg/bRTqWJzeza"; // Website URL, that can be accessed from the expansions menu
+ overview 		= "A bridge between Arma 3 and Discord"; // Supports structured text
+ hideName 		= 0; // Hide the extension name
+ hidePicture	= 0;	// Hide the extension menu
+ dlcColor[] 	= {0.23,0.39,0.30,1}; // Color used for DLC stripes and backgrounds (RGBA)
+ logoSmall 		= "[P].jpg"; // Display in creative lists, next to the entities added by the mod

@@ -1,0 +1,10 @@
+{
+    "token":"Your token goes here", 
+    "serverId":"ID of the guild / discord-server that will run the bot", 
+    "channelNames":["arma-3-chat","arma-3-live","a3djs-mute-me"],
+    "owner":"Your discord-id",
+    "botId":"Id of the application (bot)",
+    "chatChannel":"(optional) channel-id for the Arma 3 chatChannel", 
+    "liveChannel":"(optional) channel-id for the Arma 3 satelite feed", 
+    "imgChannel":"(optional) channel-id for ingame images (needs to be muted)"
+}

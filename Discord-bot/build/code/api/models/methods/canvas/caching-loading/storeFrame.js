@@ -1,0 +1,14 @@
+"use strict";
+// Copyright (c) 2023 Leo Aleksander Hartgen.
+// BSD 3-Clause License
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const fs_1 = __importDefault(require("fs"));
+function storeFrame(frame, path) {
+    const buffer = frame.toBuffer("image/jpeg");
+    fs_1.default.writeFileSync(path, buffer);
+}
+exports.default = storeFrame;
+;
