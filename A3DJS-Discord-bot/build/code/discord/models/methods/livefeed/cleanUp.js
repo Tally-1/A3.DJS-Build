@@ -13,6 +13,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 function cleanUp(channel) {
     return __awaiter(this, void 0, void 0, function* () {
+        if (channel === undefined) {
+            return;
+        }
+        ;
         const messages = yield channel.messages.fetch({ limit: 100 });
         if (messages.size === 0) {
             return;

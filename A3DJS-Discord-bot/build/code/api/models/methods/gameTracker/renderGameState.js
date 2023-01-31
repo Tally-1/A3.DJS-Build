@@ -29,7 +29,8 @@ function renderGameState(dbFolder, sessionInfo, cnvsX, discordFeed, knownMap) {
             yield cnvsX.drawSnapShot(snapshot, sessionInfo, knownMap);
             dataFound = true;
             gameTracker_1.default.stateToProccess(sessionInfo, snapshot);
-            discordFeed === null || discordFeed === void 0 ? void 0 : discordFeed.updateTransmission(snapshot);
+            const feedUpdated = discordFeed === null || discordFeed === void 0 ? void 0 : discordFeed.updateTransmission(snapshot);
+            // do something here
         }
         return { dataFound: dataFound, newGameStarted: newGameStarted };
     });

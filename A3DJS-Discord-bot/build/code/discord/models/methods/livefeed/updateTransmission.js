@@ -15,27 +15,31 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const liveEmbed_1 = __importDefault(require("../../classes/liveEmbed"));
+const promises_1 = require("node:timers/promises");
 function updateTransmission(snapshot) {
     return __awaiter(this, void 0, void 0, function* () {
         this.snapshot = snapshot;
         if (!this.liveMsgId) {
-            return;
+            return false;
         }
         ;
         const liveMessage = yield this.liveChannel.messages.fetch(this.liveMsgId);
         if (!liveMessage) {
-            return;
+            return false;
         }
         ;
         const imageUrl = yield this.sendSnapImg();
+        //for some reason the embed is not edited after a while, even though the image is sent, testing to see if timout will fix it.
+        yield (0, promises_1.setTimeout)(100);
         if (!imageUrl) {
-            return;
+            return false;
         }
         ;
         this.imageUrl = imageUrl;
         const newEmbed = new liveEmbed_1.default(this);
         yield liveMessage.edit("...");
         liveMessage.edit({ embeds: [newEmbed] });
+        return true;
     });
 }
 exports.default = updateTransmission;
