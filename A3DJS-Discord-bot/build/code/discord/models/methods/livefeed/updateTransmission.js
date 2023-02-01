@@ -37,9 +37,7 @@ function updateTransmission(snapshot) {
         ;
         this.imageUrl = imageUrl;
         const newEmbed = new liveEmbed_1.default(this);
-        yield liveMessage.edit("   ");
-        yield liveMessage.edit({ embeds: [] });
-        yield liveMessage.edit("...");
+        yield liveMessage.edit({ content: "...", embeds: [] });
         yield liveMessage.edit({ embeds: [newEmbed] });
         return true;
     });
