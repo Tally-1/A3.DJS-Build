@@ -28,8 +28,9 @@ class LiveFeed {
         this.imageChannel = A3Channels.imgChannel;
         this.previousImageMsg = undefined;
         this.sendingImage = false;
-        this.updateFrequency = 5000;
-        this.lastImgOutTime = new Date().getTime() - (this.updateFrequency); //@ts-expect-error
+        this.startTime = new Date().getTime();
+        this.updateFrequency = 7000;
+        this.lastUpdate = this.startTime - (this.updateFrequency); //@ts-expect-error
         this.snapshot = process.state.currentSnap;
     }
     ;

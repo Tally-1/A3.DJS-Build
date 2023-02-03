@@ -22,11 +22,6 @@ function sendSnapImg(deletePrevious) {
             return;
         }
         ;
-        const timeSinceLast = (new Date().getTime()) - this.lastImgOutTime;
-        if (timeSinceLast < this.updateFrequency) {
-            return;
-        }
-        ;
         this.sendingImage = true;
         if (deletePrevious === undefined) {
             deletePrevious = true;
@@ -45,7 +40,6 @@ function sendSnapImg(deletePrevious) {
             ;
             this.previousImageMsg = newMessage;
             const imageUrl = (_a = newMessage.attachments.at(0)) === null || _a === void 0 ? void 0 : _a.url;
-            this.lastImgOutTime = new Date().getTime();
             this.sendingImage = false;
             return imageUrl;
         }

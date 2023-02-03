@@ -18,12 +18,21 @@ const liveEmbed_1 = __importDefault(require("../../classes/liveEmbed"));
 const promises_1 = require("node:timers/promises");
 function updateTransmission(snapshot) {
     return __awaiter(this, void 0, void 0, function* () {
+        const timeSinceLast = (new Date().getTime()) - this.lastUpdate;
+        if (timeSinceLast < this.updateFrequency) {
+            return;
+        }
+        ;
         this.snapshot = snapshot;
         if (!this.liveMsgId) {
             return false;
         }
         ;
         const liveMessage = yield this.liveChannel.messages.fetch(this.liveMsgId);
+        if (liveMessage === undefined) {
+            return false;
+        }
+        ;
         if (!liveMessage) {
             return false;
         }
@@ -37,8 +46,9 @@ function updateTransmission(snapshot) {
         ;
         this.imageUrl = imageUrl;
         const newEmbed = new liveEmbed_1.default(this);
-        yield liveMessage.edit({ content: "...", embeds: [] });
+        //    await liveMessage.edit({content:"..."});
         yield liveMessage.edit({ embeds: [newEmbed] });
+        this.lastUpdate = new Date().getTime();
         return true;
     });
 }

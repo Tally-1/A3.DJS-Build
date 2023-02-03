@@ -16,16 +16,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const INIparser_1 = __importDefault(require("../../../../api/models/classes/INIparser"));
 const LiveFeed_1 = __importDefault(require("../../classes/LiveFeed"));
-function newGame() {
+function newGame(sendReport) {
     return __awaiter(this, void 0, void 0, function* () {
         this.previousImageMsg = undefined;
         //@ts-expect-error 
         const sessionData = process.state.session;
-        console.log("original msgId = " + this.liveMsgId);
         const newFeed = yield LiveFeed_1.default.initLiveFeed(sessionData);
         yield (newFeed === null || newFeed === void 0 ? void 0 : newFeed.initTransmission());
-        yield this.chatChannel.send("```New Game Started!```");
-        yield reportVersion(this, sessionData);
+        if (sendReport) {
+            yield this.chatChannel.send("```New Game Started!```");
+            yield reportVersion(this, sessionData);
+        }
+        ;
         return newFeed;
     });
 }
