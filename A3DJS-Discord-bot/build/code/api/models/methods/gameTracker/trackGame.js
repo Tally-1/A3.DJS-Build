@@ -39,20 +39,19 @@ function trackGame(dbFolder) {
                 lastCleanup = tempVars.lastCleanup;
                 timers = tempVars.timers;
                 //livefeed needs to be rebuilt in order to clear old data.
-                //sometimes the embed will not refresh properly when the game lasts over an hour,
-                //to fix that the feed will be initialized again every hour (there might be better fixes)
                 const currentTime = new Date().getTime();
                 if (tempVars.newGameStarted) {
                     discordFeed = yield (discordFeed === null || discordFeed === void 0 ? void 0 : discordFeed.newGame(true));
                 }
                 else if (discordFeed && (currentTime - discordFeed.startTime) > 3600000) {
+                    //sometimes the embed will not refresh properly when the game lasts over an hour,
+                    //to fix that the feed will be initialized again every hour (there might be better fixes)
                     try {
-                        discordFeed.bot.users
-                            .fetch(discordFeed.bot.config.owner)
-                            .then(owner => { owner.send("Feed reset"); });
-                        discordFeed = yield discordFeed.newGame(false);
+                        //temporarily disabeled to test if this is still an issue.
+                        // discordFeed = await discordFeed.newGame(false);  
                     }
                     catch (e) { }
+                    ;
                 }
             }
             catch (error) {

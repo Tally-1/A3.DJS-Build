@@ -12,9 +12,8 @@ function getMen(data) {
     let allUnits = [];
     for (let i = 0; i < iterations; i++) {
         const unitArr = INIparser_1.default.parseUnitString(data["units_" + i]);
-        allUnits = [...allUnits, unitArr];
+        allUnits = [...allUnits, ...unitArr];
     }
-    allUnits = allUnits[0];
     const men = {};
     const players = {};
     for (const data of allUnits) {
@@ -25,6 +24,7 @@ function getMen(data) {
             players[man.uid] = man;
         }
     }
+    ;
     return { men: men, players: players };
 }
 exports.default = getMen;
