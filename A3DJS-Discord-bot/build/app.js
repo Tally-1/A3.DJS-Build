@@ -15,7 +15,7 @@ const configFile = path_1.default.join(__dirname, "..", "..", "A3DJS_Config.json
 const bot = (0, deployBot_1.default)(A3INIfolder, configFile, version);
 // async function drawNow(size:number) {
 //     const cvx = new CanvasX("altis");
-//     while (!cvx.loaded) {
+//     while (!cvx.loaded) { 
 //         await setTimeout(100);
 //     }
 //     cvx.drawWholeMap(size);

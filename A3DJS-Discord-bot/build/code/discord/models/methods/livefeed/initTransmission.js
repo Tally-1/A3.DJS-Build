@@ -24,6 +24,7 @@ function initTransmission() {
             this.imageUrl = imageUrl;
             const embed = new liveEmbed_1.default(this); //buildLiveEmbed(this);
             this.liveMsgId = (yield this.liveChannel.send({ embeds: [embed] })).id;
+            this.updateStatus = "Feed initialized";
         }
         ;
     });

@@ -10,11 +10,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const sleep_1 = __importDefault(require("../../../util/sleep"));
+const promises_1 = require("node:timers/promises");
 function pauseTracking(sessionInfo, timeSpent, dataFound) {
     return __awaiter(this, void 0, void 0, function* () {
         let pause = sessionInfo.updateFrequency * 1000 - timeSpent;
@@ -22,11 +19,9 @@ function pauseTracking(sessionInfo, timeSpent, dataFound) {
             pause = 10;
         }
         if (pause > 0) {
-            yield (0, sleep_1.default)(pause);
+            yield (0, promises_1.setTimeout)(pause);
         }
-        else {
-            console.log("Snapshot update was slower than wanted frequency");
-        }
+        ;
     });
 }
 exports.default = pauseTracking;

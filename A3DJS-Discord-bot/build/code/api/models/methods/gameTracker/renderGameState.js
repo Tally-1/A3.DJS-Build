@@ -15,7 +15,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const gameTracker_1 = __importDefault(require("../../classes/gameTracker"));
-const INIparser_1 = __importDefault(require("../../classes/INIparser"));
 const snapshot_1 = __importDefault(require("../../classes/snapshot"));
 function renderGameState(dbFolder, sessionInfo, cnvsX, discordFeed, knownMap) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -25,14 +24,18 @@ function renderGameState(dbFolder, sessionInfo, cnvsX, discordFeed, knownMap) {
         if (updateAvailable && (!newGameStarted)) {
             const snapshot = snapshot_1.default.getCurrent(dbFolder);
             sessionInfo.addStats(snapshot);
-            INIparser_1.default.readCommands(sessionInfo, dbFolder);
             yield cnvsX.drawSnapShot(snapshot, sessionInfo, knownMap);
             dataFound = true;
             gameTracker_1.default.stateToProccess(sessionInfo, snapshot);
-            const feedUpdated = discordFeed === null || discordFeed === void 0 ? void 0 : discordFeed.updateTransmission(snapshot);
-            // do something here
+            const updateStatus = yield (discordFeed === null || discordFeed === void 0 ? void 0 : discordFeed.updateTransmission(snapshot));
+            if (discordFeed && updateStatus) {
+                discordFeed.updateStatus = updateStatus;
+            }
         }
-        return { dataFound: dataFound, newGameStarted: newGameStarted };
+        return {
+            dataFound: dataFound,
+            newGameStarted: newGameStarted
+        };
     });
 }
 exports.default = renderGameState;

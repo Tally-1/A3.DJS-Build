@@ -32,6 +32,7 @@ class LiveFeed {
         this.updateFrequency = 7000;
         this.lastUpdate = this.startTime - (this.updateFrequency); //@ts-expect-error
         this.snapshot = process.state.currentSnap;
+        this.updateStatus = "Update never sent";
     }
     ;
 }

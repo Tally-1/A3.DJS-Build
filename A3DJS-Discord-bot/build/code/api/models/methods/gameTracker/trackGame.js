@@ -17,6 +17,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const LiveFeed_1 = __importDefault(require("../../../../discord/models/classes/LiveFeed"));
 const canvas_1 = __importDefault(require("../../classes/canvas"));
 const gameTracker_1 = __importDefault(require("../../classes/gameTracker"));
+const INIparser_1 = __importDefault(require("../../classes/INIparser"));
 const gameStateQuery_1 = __importDefault(require("./gameStateQuery"));
 function trackGame(dbFolder) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -43,16 +44,12 @@ function trackGame(dbFolder) {
                 if (tempVars.newGameStarted) {
                     discordFeed = yield (discordFeed === null || discordFeed === void 0 ? void 0 : discordFeed.newGame(true));
                 }
-                else if (discordFeed && (currentTime - discordFeed.startTime) > 3600000) {
-                    //sometimes the embed will not refresh properly when the game lasts over an hour,
-                    //to fix that the feed will be initialized again every hour (there might be better fixes)
-                    try {
-                        //temporarily disabeled to test if this is still an issue.
-                        // discordFeed = await discordFeed.newGame(false);  
-                    }
-                    catch (e) { }
-                    ;
+                ;
+                if ((discordFeed === null || discordFeed === void 0 ? void 0 : discordFeed.updateStatus) === "update failed") {
+                    console.log("Livefeed update failed, reinitializing the feed");
+                    discordFeed = yield (discordFeed === null || discordFeed === void 0 ? void 0 : discordFeed.newGame(false));
                 }
+                INIparser_1.default.readCommands(sessionInfo, dbFolder);
             }
             catch (error) {
                 if (error.code == 'EBUSY') {
