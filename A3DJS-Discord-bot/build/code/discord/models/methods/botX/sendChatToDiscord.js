@@ -10,6 +10,10 @@ function sendChatToDiscord(chatName, text, _uid) {
         return false;
     }
     ;
+    console.log("");
+    console.log("----------chat message---------");
+    console.log('Arma->Discord: "' + chatName + '": ' + text);
+    console.log("-------------------------------");
     const timeSinceStartup = (new Date().getTime()) - bot.startUpTime;
     //time is needed to init bot properly.
     if (timeSinceStartup < 5000) {

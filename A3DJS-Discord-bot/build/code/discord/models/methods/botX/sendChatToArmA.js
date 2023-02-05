@@ -7,15 +7,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const INIparser_1 = __importDefault(require("../../../../api/models/classes/INIparser"));
 function sendChatToArmA(message, folder) {
-    var _a;
-    const isOwner = ((_a = message.guild) === null || _a === void 0 ? void 0 : _a.ownerId) == message.author.id;
+    // const isOwner = message.guild?.ownerId == message.author.id;    
     const sender = message.author.username;
     const text = message.content;
-    let tag = "";
-    if (isOwner) {
-        tag = "(Admin)";
-    }
-    ;
+    // let tag = "";
+    // if(isOwner){tag = "(Admin)"};
+    console.log("");
+    console.log("----------chat message---------");
+    console.log('Discord->Arma: "' + sender + '": ' + text);
+    console.log("-------------------------------");
     const command = "discord-chat";
     const target = "";
     const requestId = (new Date().getTime().toString());
