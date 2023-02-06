@@ -7,7 +7,7 @@ class CfgPatches
 		author = "Tally";
 
 		requiredVersion = 1.60;
-		requiredAddons[] = {};
+		requiredAddons[] = {"A3_Functions_F", "CBA_settings"};
 		units[] = {};
 		weapons[] = {};
 	};
