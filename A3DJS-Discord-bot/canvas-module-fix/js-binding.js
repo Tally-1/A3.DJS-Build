@@ -1,9 +1,14 @@
-const { existsSync, readFileSync } = require('fs')
+const { existsSync, readFileSync, readdirSync } = require('fs')
 const { join } = require('path')
 
 const { platform, arch } = process
 
+const curDir = "./";
+console.dir(readdirSync(curDir));
+const curDir2 = join(__dirname);
+console.dir(readdirSync(curDir2));
 const localFileDir = join(__dirname,'..','canvas-win32-x64-msvc', 'skia.win32-x64-msvc.node');
+
 
 let nativeBinding = null
 let localFileExisted = false
