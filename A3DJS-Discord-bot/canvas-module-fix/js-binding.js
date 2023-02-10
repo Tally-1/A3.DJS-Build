@@ -3,10 +3,10 @@ const { join } = require('path')
 
 const { platform, arch } = process
 
-const curDir = "./";
+const curDir = "./node_modules/@napi-rs/canvas";
 console.dir(readdirSync(curDir));
-const curDir2 = join(__dirname);
-console.dir(readdirSync(curDir2));
+// const curDir2 = join(__dirname);
+// console.dir(readdirSync(curDir2));
 const localFileDir = join(__dirname,'..','canvas-win32-x64-msvc', 'skia.win32-x64-msvc.node');
 
 
