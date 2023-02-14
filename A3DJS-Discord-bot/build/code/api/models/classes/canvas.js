@@ -59,6 +59,7 @@ const getGridImages_1 = __importDefault(require("../methods/canvas/caching-loadi
 ;
 class CanvasX {
     constructor(map) {
+        // const Cnvs = require("@napi-rs/canvas");
         this.drawSnapShot = drawSnapshot_1.default;
         this.backGroundCached = backGroundCached_1.default;
         this.setBackgroundSync = setBackgroundSync_1.default;
@@ -112,6 +113,20 @@ class CanvasX {
         this.loaded = false;
         (0, preLoadImages_1.default)(this, map); //this preLoad may take a couple of seconds
     }
+    storeUnknownIconName(iconName) {
+        const root = path_1.default.join(__dirname, "..", "..", "..", "..", "..");
+        const unknownJson = path_1.default.join(root, "icons", "unknown.json");
+        const unknownIcons = require(unknownJson);
+        const iconRegistered = unknownIcons.includes(iconName);
+        if (iconRegistered) {
+            return;
+        }
+        ;
+        unknownIcons.push(iconName);
+        fs_1.default.writeFileSync(unknownJson, JSON.stringify(unknownIcons));
+        return;
+    }
+    ;
 }
 exports.default = CanvasX;
 CanvasX.removeCachedFiles = removeCachedFiles_1.default;

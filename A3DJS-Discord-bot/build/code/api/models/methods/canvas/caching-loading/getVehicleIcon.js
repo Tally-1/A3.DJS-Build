@@ -13,6 +13,7 @@ function getVehicleIcon(vehicle) {
         return icon;
     }
     ;
+    this.storeUnknownIconName(vehicle.icon.toLowerCase());
     icon = this.icons[vehicle.side][(vehicle.type)];
     if (!icon) {
         icon = this.icons[vehicle.side]["iconVehicle_ca"];

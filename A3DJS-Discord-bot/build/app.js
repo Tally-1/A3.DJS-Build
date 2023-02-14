@@ -8,6 +8,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const initApi_1 = require("./code/api/initApi");
 const path_1 = __importDefault(require("path"));
 const deployBot_1 = __importDefault(require("./code/discord/deployBot"));
+// import CanvasX from "./code/api/models/classes/canvas";
+// import sleep from "./code/api/util/sleep";
 const version = 0.14;
 const A3INIfolder = path_1.default.join(__dirname, "..", "..", "@INIDBI2 - Official extension", "db");
 const configFile = path_1.default.join(__dirname, "..", "..", "A3DJS_Config.json");
@@ -23,4 +25,24 @@ const bot = (0, deployBot_1.default)(A3INIfolder, configFile, version);
 //         stdio: "inherit" 
 //     });
 // });
+// async function drwWhl(map:string, resolution:number){
+//     const cnvx = new CanvasX(map);
+//     while (!cnvx.loaded) {
+//         await sleep(1000);
+//     };
+//     const grids = cnvx.mapData.size;
+//     cnvx.drawMultiGrid(
+//         [0,0],
+//         grids,
+//         resolution,
+//         "malden",
+//         (path.join(__dirname,"..","..", map+".jpg")),
+//         false
+//     );
+//     await sleep(30000);
+// }
+// const maps = ["altis", "stratis", "malden", "tanoa", "enoch"];
+// for (const map of maps) {
+//     drwWhl(map, 2000);
+// };
 console.log("<----------A3DJS " + version + " initialization done----------->");

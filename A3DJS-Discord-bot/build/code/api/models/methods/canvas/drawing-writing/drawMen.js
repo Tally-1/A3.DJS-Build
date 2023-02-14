@@ -15,6 +15,7 @@ function drawMen(snapshot, pencil, backGroundData) {
         ;
         let icon = this.icons[side][unit.icon];
         if (!icon) {
+            this.storeUnknownIconName(unit.icon);
             icon = this.icons[side]["iconMan_ca"];
         }
         ;
