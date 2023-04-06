@@ -8,11 +8,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const initApi_1 = require("./code/api/initApi");
 const path_1 = __importDefault(require("path"));
 const deployBot_1 = __importDefault(require("./code/discord/deployBot"));
+const fs_1 = require("fs");
 // import CanvasX from "./code/api/models/classes/canvas";
 // import sleep from "./code/api/util/sleep";
-const version = 0.14;
+const version = 0.15;
 const A3INIfolder = path_1.default.join(__dirname, "..", "..", "@INIDBI2 - Official extension", "db");
 const configFile = path_1.default.join(__dirname, "..", "..", "A3DJS_Config.json");
+// const A3INIfolder = "F:/Leo backup/Serverstuff/SteamCmd++/steamapps/common/Arma 3 Server/@INIDBI2 - Official extension/db"
+console.log((0, fs_1.readdirSync)(A3INIfolder));
+// process.exit();
 (0, initApi_1.initApi)(A3INIfolder);
 const bot = (0, deployBot_1.default)(A3INIfolder, configFile, version);
 // import child_process from "child_process";

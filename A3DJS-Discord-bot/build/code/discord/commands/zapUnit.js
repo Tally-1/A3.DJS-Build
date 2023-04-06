@@ -19,6 +19,7 @@ const INIparser_1 = __importDefault(require("../../api/models/classes/INIparser"
 const botX_1 = __importDefault(require("../models/classes/botX"));
 const command = new discord_js_1.SlashCommandBuilder()
     .setName('zap-unit')
+    .setDefaultMemberPermissions(0)
     .setDescription('Send a gift from the sky to a soldier of your choice...')
     .addBooleanOption(option => option
     .setName("players-only")

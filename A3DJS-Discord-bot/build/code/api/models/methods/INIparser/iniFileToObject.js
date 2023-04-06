@@ -10,7 +10,8 @@ const path_1 = __importDefault(require("path"));
 const parseINIString_1 = __importDefault(require("./parseINIString"));
 function iniFileToObject(folder, fileName) {
     const file = path_1.default.join(folder, fileName + ".ini");
-    const string = fs_1.default.readFileSync(file, 'utf8');
+    const string = fs_1.default.readFileSync(file, 'utf8')
+        .replace('Init=""---""', '');
     const parsedString = (0, parseINIString_1.default)(string);
     const data = parsedString[fileName];
     return data;

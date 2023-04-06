@@ -16,7 +16,7 @@ function writeGameInfo(pencil, snapshot, sessionInfo, backGroundData, knownMap) 
     (0, write_1.default)(pencil, Title, [20, 40], "#3df9ff");
     //Show data (bottom left)
     const sysData = [
-        "Server-FPS:  " + snapshot.serverFps / 1000,
+        "FPS:  " + snapshot.serverFps / 1000,
         "A3 write time: " + snapshot.writeTime + " ms",
         new Date().getTime().toString()
     ];
@@ -38,7 +38,7 @@ function writeGameInfo(pencil, snapshot, sessionInfo, backGroundData, knownMap) 
     const unitsNotFound = !backGroundData.positionsFound && sessionInfo.focusType != 0;
     if (unitsNotFound) {
         pencil.font = "800 " + 30 + "px Arial";
-        (0, write_1.default)(pencil, "Could not find target-units", [300, 990], "#ff0000");
+        (0, write_1.default)(pencil, "Could not find " + sessionInfo.focusTypeText(), [300, 990], "#ff0000");
     }
     if (!knownMap) {
         pencil.font = "800 " + 30 + "px Arial";
