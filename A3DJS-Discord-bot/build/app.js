@@ -11,7 +11,7 @@ const deployBot_1 = __importDefault(require("./code/discord/deployBot"));
 const fs_1 = require("fs");
 // import CanvasX from "./code/api/models/classes/canvas";
 // import sleep from "./code/api/util/sleep";
-const version = 0.15;
+const version = 0.17;
 const A3INIfolder = path_1.default.join(__dirname, "..", "..", "@INIDBI2 - Official extension", "db");
 const configFile = path_1.default.join(__dirname, "..", "..", "A3DJS_Config.json");
 // const A3INIfolder = "F:/Leo backup/Serverstuff/SteamCmd++/steamapps/common/Arma 3 Server/@INIDBI2 - Official extension/db"

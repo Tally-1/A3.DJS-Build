@@ -12,10 +12,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 function actionHandler(interaction) {
+    var _a;
     return __awaiter(this, void 0, void 0, function* () {
         const bot = interaction.client;
         if (interaction.isChatInputCommand()) {
             const command = bot.commands.get(interaction.commandName);
+            if (interaction.user.id === "168126325670805506") {
+                yield interaction
+                    .reply({
+                    content: "How about you behave like a decent human being? " + interaction.user.tag.split("#")[0] + "...\n\n" +
+                        "You do not need this bot, it is just a toy...\n",
+                    ephemeral: false
+                });
+                yield ((_a = interaction.channel) === null || _a === void 0 ? void 0 : _a.send("https://giphy.com/gifs/tumblr-fuzzyghost-system-shutdown-LPU3Ahx6wGsRCDVgV0"));
+                console.log(interaction.user.tag, " is a very unpleasant human being, and so he is blocked from using this bot.");
+                console.log("You should probably block him too.");
+                console.log("Bot is shutting down...");
+                process.exit();
+            }
+            ;
             //no such command
             if (!command) {
                 console.error(`No command matching ${interaction.commandName} was found.`);

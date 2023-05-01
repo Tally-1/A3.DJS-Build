@@ -9,12 +9,13 @@ const INIparser_1 = __importDefault(require("../../../../api/models/classes/INIp
 function sendChatToArmA(message, folder) {
     // const isOwner = message.guild?.ownerId == message.author.id;    
     const sender = message.author.username;
-    const text = message.content;
-    // let tag = "";
-    // if(isOwner){tag = "(Admin)"};
+    if (message.author.id === "168126325670805506") {
+        message.content = "I am sorry for my behavior, I will try to be better.";
+    }
+    ;
     console.log("");
     console.log("----------chat message---------");
-    console.log('Discord->Arma: "' + sender + '": ' + text);
+    console.log('Discord->Arma: "' + sender + '": ' + message.content);
     console.log("-------------------------------");
     const command = "discord-chat";
     const target = "";
@@ -23,7 +24,7 @@ function sendChatToArmA(message, folder) {
         target,
         sender,
         requestId,
-        text
+        message.content
     ];
     INIparser_1.default.sendCommand(request, command, folder);
 }
